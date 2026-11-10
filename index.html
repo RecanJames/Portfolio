@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recan James Castillo | Short-Form, VSL, UGC & Meta Ads Copywriter</title>
+    <!-- Google Fonts para sa mas hapsay ug nindot nga typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Lenis Smooth Scroll Library -->
+    <script type="importmap">
+    {
+        "imports": {
+            "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"
+        }
+    }
+    </script>
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --text-color: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --script-bg: #020617;
+            --tag-bg: #1e293b;
+            --border-color: rgba(56, 189, 248, 0.25);
+            
+            --sh-tag: #38bdf8;       
+            --sh-visual: #fbbf24;    
+            --sh-keyword: #f472b6;   
+            --sh-string: #a5f3fc;    
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* LOADING VEIL / OPENING POPUP ANIMATION (Rec.jpg) */
+        #loader {
+            position: fixed; inset: 0; z-index: 3000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: var(--bg-color);
+            transition: opacity 700ms cubic-bezier(0.2,0,0,1);
+        }
+        #loader.fade-out { opacity: 0; pointer-events: none; }
+
+        .loader-avatar-container {
+            width: 9rem; height: 9rem;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .loader-avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .loader-text {
+            margin-top: 0.5rem; font-family: 'Montserrat', sans-serif; font-size: 1.125rem;
+            text-transform: uppercase; letter-spacing: 0.18em; font-weight: 700; color: var(--accent-color);
+        }
+
+        .loader-meter {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+            background: var(--border-color);
+        }
+        .loader-meter-fill {
+            height: 100%; background: var(--accent-color); transform-origin: left; transform: scaleX(0);
+        }
+
+        /* STICKY STACK CONTAINER & LAYERS ANIMATION */
+        [data-sticky-stack] { position: relative; background: transparent; }
+        [data-sticky-layer] { position: sticky; top: 0; height: 100lvh; overflow: hidden; }
+        [data-sticky-layer]:nth-child(1) { z-index: 10; }
+        [data-sticky-layer]:nth-child(2) { z-index: 20; }
+        [data-sticky-layer]:nth-child(3) { z-index: 30; }
+        [data-sticky-layer]:nth-child(4) { z-index: 40; }
+        [data-sticky-layer]:nth-child(5) { z-index: 50; }
+        
+        [data-sticky-inner] { 
+            width: 100%; 
+            height: 100%; 
+            transform-origin: center center; 
+            position: relative; 
+            overflow-y: auto; 
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.94), rgba(15, 23, 42, 0.90));
+            backdrop-filter: blur(16px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            transition: border-radius 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 1st PAGE BACKGROUND (4.jpg) */
+        [data-sticky-layer]:nth-child(1) [data-sticky-inner] {
+            background: 
+                linear-gradient(rgba(3, 7, 18, 0.78), rgba(3, 7, 18, 0.85)),
+                url('4.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 2nd PAGE BACKGROUND (2.jpg) */
+        #about [data-sticky-inner] {
+            background: 
+                linear-gradient(rgba(3, 7, 18, 0.82), rgba(3, 7, 18, 0.88)),
+                url('2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        [data-sticky-shade] { 
+            position: absolute; 
+            inset: 0; 
+            background: #000; 
+            opacity: 0; 
+            pointer-events: none; 
+            z-index: 5; 
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            position: relative;
+        }
+
+        /* GIBAG-O NGA FONT UG STYLING PARA SA PANGALAN SA FIRST PAGE */
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 25px rgba(56, 189, 248, 0.3);
+        }
+
+        header p.tagline {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .experience-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: #38bdf8;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+
+        header p.sub {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 0 auto 20px auto;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            color: #030712;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 25px -5px rgba(56, 189, 248, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: #030712;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 25px -5px rgba(56, 189, 248, 0.4);
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+            padding-bottom: 10px;
+            letter-spacing: -0.5px;
+            color: var(--text-color);
+        }
+
+        /* ABOUT ME SECTION STYLING */
+        .about-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(9, 13, 22, 0.9));
+            backdrop-filter: blur(10px);
+            padding: 45px;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            max-width: 100%;
+            position: relative;
+        }
+
+        .about-card p {
+            color: var(--text-color);
+            font-size: 1.6rem;
+            line-height: 1.9;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-card strong {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* 2x2 Grid Layout para sakto silang upat sa screen */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #0f172a, #090d16);
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 70px; height: 70px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-4px) scale(1.005);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 6px;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card p.desc {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: var(--tag-bg);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .script-toggle-btn {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .script-toggle-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        /* SCRIPT POPUP MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.88);
+            backdrop-filter: blur(8px);
+            z-index: 4000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #111827, #0b0f19);
+            border: 1px solid var(--accent-color);
+            border-radius: 14px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.35);
+            animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .modal-header h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .modal-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background-color: var(--script-bg);
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }
+
+        .hl-tag { color: var(--sh-tag); font-weight: bold; }
+        .hl-visual { color: var(--sh-visual); font-style: italic; }
+        .hl-keyword { color: var(--sh-keyword); font-weight: bold; }
+        .hl-string { color: var(--sh-string); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            background: linear-gradient(145deg, #111827, #0b0f19);
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+            color: var(--text-muted);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            font-size: 1.05rem;
+        }
+
+        ul li:hover {
+            transform: translateX(5px);
+            color: var(--text-color);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        ul li strong {
+            color: var(--text-color);
+        }
+
+        .contact-box {
+            text-align: center;
+            background: linear-gradient(145deg, #111827, #0b0f19);
+            padding: 40px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+        }
+
+        .contact-box p {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 25px;
+            border-top: 1px solid #1e293b;
+            padding-top: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Veil / Opening Popup Animation (Rec.jpg) -->
+    <div id="loader" role="status" aria-label="Loading Recan James Castillo Portfolio">
+        <div class="loader-avatar-container">
+            <img src="Rec.jpg" alt="Recan James Castillo">
+        </div>
+        <div class="loader-text">Recan James Castillo</div>
+        <div class="loader-meter">
+            <div class="loader-meter-fill" id="loaderMeterFill"></div>
+        </div>
+    </div>
+
+    <!-- STICKY STACK CONTAINER -->
+    <div data-sticky-stack>
+
+        <!-- 1. HERO LAYER -->
+        <div data-sticky-layer>
+            <div data-sticky-inner>
+                <div class="container">
+                    <header>
+                        <h1>Recan James Castillo</h1>
+                        <p class="tagline">Short-Form, VSL, UGC & Meta Ads Copywriter That Scales Brands.</p>
+                        <div class="experience-badge">⚡ 2 Years Direct-Response Copywriting Experience</div>
+                        <p class="sub">Hi, I am Recan James Castillo, a performance copywriter crafting scroll-stopping Short-Form video scripts, high-converting VSLs, native UGC ads, and Meta Ad campaigns.</p>
+                        <div class="btn-group">
+                            <a href="#portfolio" class="btn">View Script Vault</a>
+                            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                        </div>
+                    </header>
+                </div>
+            </div>
+            <div data-sticky-shade></div>
+        </div>
+
+        <!-- 2. ABOUT LAYER -->
+        <div data-sticky-layer id="about">
+            <div data-sticky-inner>
+                <div class="container">
+                    <h2>About Me</h2>
+                    <div class="about-card">
+                        <p>Hello! I am <strong>Recan James Castillo</strong>, a seasoned direct-response and performance copywriter with over 2 solid years of intensive experience in scaling DTC and e-commerce brands. Throughout my career, I have dedicated myself to mastering the psychology of consumer behavior, turning cold, indifferent traffic into hyper-loyal, paying buyers through meticulously crafted strategic words.</p>
+                        <p style="margin-bottom: 0;">Whether your brand requires high-energy, 3-second hook short-form video scripts designed to dominate TikTok and Instagram Reels, precisely timed long-form VSL frameworks that captivate and convert, native UGC concepts that build instant consumer trust, or high-converting Meta Ad campaigns built for maximum ROAS, I specialize in engineering copy that cuts through the digital noise and delivers predictable revenue growth.</p>
+                    </div>
+                </div>
+            </div>
+            <div data-sticky-shade></div>
+        </div>
+
+        <!-- 3. PORTFOLIO LAYER -->
+        <div data-sticky-layer id="portfolio">
+            <div data-sticky-inner>
+                <div class="container">
+                    <h2>Portfolio Script Library</h2>
+                    
+                    <div class="portfolio-grid">
+                        <!-- Short-Form -->
+                        <div class="card">
+                            <div>
+                                <h3>Short-Form Ad Scripts</h3>
+                                <div class="badge-container">
+                                    <span class="badge">TikTok</span>
+                                    <span class="badge">Reels</span>
+                                    <span class="badge">Shorts</span>
+                                </div>
+                                <p class="desc">High-energy, fast-paced short-form video scripts optimized for modern social media algorithms.</p>
+                            </div>
+                            <div>
+                                <button class="script-toggle-btn" onclick="openModal('modal_sf')">👁️ View Scripts (5)</button>
+                            </div>
+                        </div>
+
+                        <!-- VSL -->
+                        <div class="card">
+                            <div>
+                                <h3>Long-Form VSL Scripts</h3>
+                                <div class="badge-container">
+                                    <span class="badge">VSL</span>
+                                    <span class="badge">Direct Response</span>
+                                </div>
+                                <p class="desc">Full-length, high-converting direct response VSL scripts engineered for maximum engagement.</p>
+                            </div>
+                            <div>
+                                <button class="script-toggle-btn" onclick="openModal('modal_vsl')">👁️ View Scripts (5)</button>
+                            </div>
+                        </div>
+
+                        <!-- UGC -->
+                        <div class="card">
+                            <div>
+                                <h3>UGC Ad Scripts</h3>
+                                <div class="badge-container">
+                                    <span class="badge">Native Ads</span>
+                                    <span class="badge">Creator Style</span>
+                                </div>
+                                <p class="desc">Native creator-style video scripts built to blend into user feeds and drive native engagement.</p>
+                            </div>
+                            <div>
+                                <button class="script-toggle-btn" onclick="openModal('modal_ugc')">👁️ View Scripts (5)</button>
+                            </div>
+                        </div>
+
+                        <!-- Meta Ads -->
+                        <div class="card">
+                            <div>
+                                <h3>Meta Ads Copies</h3>
+                                <div class="badge-container">
+                                    <span class="badge">Facebook</span>
+                                    <span class="badge">Instagram</span>
+                                    <span class="badge">High CTR</span>
+                                </div>
+                                <p class="desc">Direct-response Facebook and Instagram ad copies engineered for high click-through rates and low CPC.</p>
+                            </div>
+                            <div>
+                                <button class="script-toggle-btn" onclick="openModal('modal_meta')">👁️ View Copies (5)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-sticky-shade></div>
+        </div>
+
+        <!-- 4. SERVICES LAYER -->
+        <div data-sticky-layer id="services">
+            <div data-sticky-inner>
+                <div class="container">
+                    <h2>Core Services</h2>
+                    <ul>
+                        <li><strong>Short-Form Video Scripts:</strong> Fast-paced, hook-driven scripts optimized for TikTok, Instagram Reels, and YouTube Shorts.</li>
+                        <li><strong>Long-Form VSLs:</strong> Deep-dive video sales letter frameworks for physical and digital offers.</li>
+                        <li><strong>UGC Ad Scripts:</strong> Native creator-style video scripts that build instant trust and drive ROAS.</li>
+                        <li><strong>Meta Ad Campaigns:</strong> Scroll-stopping Facebook and Instagram ad copies engineered for high CTR and low CPC.</li>
+                    </ul>
+                </div>
+            </div>
+            <div data-sticky-shade></div>
+        </div>
+
+        <!-- 5. CONTACT LAYER -->
+        <div data-sticky-layer id="contact">
+            <div data-sticky-inner>
+                <div class="container">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-box">
+                        <p>Ready to scale your brand with proven scripts backed by 2 years of experience? Let's talk, Boss!</p>
+                        <p>Email: <strong>rjcastillo826@gmail.com</strong></p>
+                        <a href="mailto:rjcastillo826@gmail.com" class="btn" style="margin-top: 1rem;">Send Direct Email</a>
+                    </div>
+                    <footer>
+                        <p>&copy; 2025 Recan James Castillo. All Rights Reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= POPUP MODALS FOR SCRIPTS ================= -->
+
+    <!-- Modal 1: Short-Form -->
+    <div id="modal_sf" class="modal-overlay" onclick="outsideClose(event, 'modal_sf')">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Short-Form Ad Scripts</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal_sf')">&times;</button>
+            </div>
+            <div class="modal-body">
+<span class="hl-tag">--- SCRIPT 1: PORTABLE MINI BLENDER ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-visual">(Creator rushing out door, holding bulky parts in frustration)</span>
+<span class="hl-string">Creator: "Stop wasting ten dollars every single morning on overpriced coffee-shop smoothies that ruin your daily budget."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Traditional kitchen blenders are heavy, annoyingly loud, messy to set up, and absolute nightmares to clean when you are already running late for work."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"Meet the BlendGo Mini. It is completely cordless, USB-rechargeable, and powerful enough to crush solid ice cubes in just twenty seconds flat right at your office desk or inside your car."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Tap the button below right now to lock in your exclusive forty percent launch discount before our limited inventory runs out!"</span>
+
+<span class="hl-tag">--- SCRIPT 2: BLUE LIGHT GLASSES ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-visual">(Rubbing tired eyes in front of a glowing computer screen)</span>
+<span class="hl-string">Creator: "If your eyes feel like burning sandpaper by five o'clock every afternoon, you need to watch this right now."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Constant digital screen glare wrecks your natural melatonin production, triggers blinding afternoon headaches, and completely destroys your sleep quality."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"These stylish, featherlight frames block ninety-nine percent of harmful blue light rays without that awkward, embarrassing yellow tint."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Click the link below to upgrade your workday comfort and protect your vision starting today!"</span>
+
+<span class="hl-tag">--- SCRIPT 3: CAR SCRATCH REMOVER ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-visual">(Pointing angrily at a nasty car door scratch)</span>
+<span class="hl-string">Creator: "Do not pay three hundred dollars at a body shop for a tiny surface scratch on your car door."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Accidental parking lot scrapes and key marks ruin your vehicle's appearance and tank its resale value instantly without you even noticing."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"Our advanced nano-magic cloth buffs out ugly scuffs and clear-coat scratches in seconds with zero professional tools required. Look at that mirror shine!"</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Grab yours today with free express shipping worldwide by tapping the button below!"</span>
+
+<span class="hl-tag">--- SCRIPT 4: TEETH WHITENING POWDER ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-string">Creator: "I drink three cups of dark black coffee daily, but my teeth stay blinding white using this one simple step."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Most commercial whitening strips cause agonizing tooth sensitivity and leave your gums bleeding while costing a small fortune at specialty clinics."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"Medical-grade activated charcoal safely lifts years of stubborn yellow stains in just five days without damaging your delicate tooth enamel."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Tap the link below to claim your exclusive fifty percent discount bundle right now!"</span>
+
+<span class="hl-tag">--- SCRIPT 5: TRAVEL PHONE MOUNT ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-string">Creator: "Stop balancing your expensive smartphone precariously on disgusting airplane tray tables."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Neck strain during long flights and awkward video calls on shaky hotel desks make traveling an absolute physical torture."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"This pocket-sized magnetic mount clips securely onto any surface for ultimate hands-free movie watching and hands-free video calls anywhere."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Click the button below to get fully flight-ready and comfortable for your next big trip!"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: VSL -->
+    <div id="modal_vsl" class="modal-overlay" onclick="outsideClose(event, 'modal_vsl')">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Long-Form VSL Scripts</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal_vsl')">&times;</button>
+            </div>
+            <div class="modal-body">
+<span class="hl-tag">--- VSL 1: JOINT PAIN RELIEF PROTOCOL ---</span>
+
+<span class="hl-tag">THE HOOK & PATTERN INTERRUPT:</span>
+<span class="hl-string">"If you wake up every single morning feeling like your knees are coated in crushed glass... and you automatically grab the wooden handrail just to hobble down your own staircase—stop what you're doing right now. Because everything you've ever been told about joint pain being an inevitable part of 'getting old' is an absolute, flat-out lie. According to a breakthrough clinical study published out of Tokyo, joint stiffness has virtually nothing to do with normal cartilage wear-and-tear... and everything to do with a microscopic 'toxin leakage' actively attacking and corroding your synovial fluid."</span>
+
+<span class="hl-tag">THE AGITATION & THE VILLAIN:</span>
+<span class="hl-string">"For years, traditional doctors have handed you the exact same tired prescription: take synthetic glucosamine, stretch more, or worse... prepare yourself for costly joint replacement surgery down the road. But big pharma conglomerates know a dirty secret: temporary pain patches and generic pills do not fix the root cause of inflammation. They are deliberately designed to keep you trapped in an endless cycle of buying month after month while your joints continue to degrade from the inside out. Every single morning you wake up stiff and in agony, that toxic leakage is widening, leaving your bones grinding against bone with zero natural cushion left."</span>
+
+<span class="hl-tag">THE MECHANISM & SOLUTION:</span>
+<span class="hl-string">"Enter SynthoFlex-7. Unlike standard over-the-counter painkillers that merely mask your symptoms, our proprietary Alpine botanical compound targets the exact enzymatic breakdown causing your synovial fluid to leak away. Within just 7 days of taking your very first dose, rigorous clinical trials showed a staggering 74% reduction in morning joint inflammation, safely allowing you to walk, climb stairs, and play with your grandchildren completely pain-free. No harsh side effects. No artificial chemical fillers. Just pure, targeted biological repair that restores your mobility."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Right now, during this special restricted video broadcast, we are offering our fresh introductory batch directly to the public with free shipping and an ironclad 90-day empty bottle guarantee. You risk absolutely nothing because our laboratory stands 100% behind the incredible restorative power of this formula. But you must act fast—supplies from our latest seasonal harvest are extremely limited, and once allocation runs out, we cannot guarantee this special introductory pricing. Click the button directly below this video right now to secure your risk-free supply before our inventory sells out completely."</span>
+
+<span class="hl-tag">--- VSL 2: DEEP SLEEP & CORTISOL FAT LOSS ---</span>
+
+<span class="hl-tag">THE HOOK:</span>
+<span class="hl-string">"If you manage to sleep for 8 full hours every single night, yet you wake up feeling like you were hit by a freight train... and no matter how many strict green salads you eat or grueling miles you run on the treadmill, your stubborn belly fat stubbornly refuses to budge—listen very closely to every word of this presentation. This is not your fault. You are not lacking discipline or willpower. Your body's internal 'fat-burning switch' is locked tightly shut by a dangerous nighttime cortisol surge that forces your metabolism into emergency fat-storage mode while you sleep."</span>
+
+<span class="hl-tag">THE AGITATION:</span>
+<span class="hl-string">"The fitness industry tells you to 'eat less and move more.' But when your cortisol levels spike past safe thresholds at night, your body releases high amounts of insulin and cortisol, turning every calorie you consumed during the day directly into visceral belly fat around your organs. You feel constantly exhausted, irritable, and defeated because your biological recovery system is entirely blocked. Standard sleep aids knock you unconscious, but they do nothing to lower nighttime stress hormones, meaning you wake up just as fat-blocked and tired as when you went to bed."</span>
+
+<span class="hl-tag">THE SOLUTION:</span>
+<span class="hl-string">"Introducing SlumberLean. This is the world's first dual-action nighttime metabolic tonic formulated specifically to shut down late-night cortisol production while forcing your deep REM sleep cycles to trigger rapid fat oxidation. Clinical testing confirmed that users dropped an average of 14 pounds of pure belly fat in 30 days without changing their diet, simply by fixing their nighttime hormonal imbalance."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Supplies of our rare herbal extract are extremely limited due to rigorous international harvesting constraints and strict quality control standards. When you order today through this presentation, you lock in our deepest wholesale discount and receive two free bonus digital metabolic guides shipped straight to your inbox. Plus, every order is protected by our unyielding 60-day 100% money-back guarantee—if you do not see a dramatic shift in your morning energy levels and waistline measurements, you get every single penny back with zero hassle. Do not let another exhausting night pass you by. Click the link below right now to claim your bottles before stock is gone!"</span>
+
+<span class="hl-tag">--- VSL 3: ALPINE BLOOD SUGAR OPTIMIZER ---</span>
+
+<span class="hl-tag">THE HOOK:</span>
+<span class="hl-string">"Forget everything you know about strict low-carb diets, exhausting meal preps, and painful daily finger pricks. A team of independent medical researchers in Zurich has just uncovered a rare Alpine plant extract that naturally commands your pancreas to regulate glucose levels effortlessly."</span>
+
+<span class="hl-tag">THE AGITATION:</span>
+<span class="hl-string">"Living with erratic blood sugar spikes means riding an exhausting energy rollercoaster every single day. You feel dizzy after meals, crave sugar constantly, and live in constant anxiety about long-term metabolic health complications. Traditional medications often bring heavy side effects without fixing the root cellular resistance."</span>
+
+<span class="hl-tag">THE SOLUTION:</span>
+<span class="hl-string">"GlucoAlpine targets cellular insulin resistance at the root, balancing your glycemic index naturally within 14 days. It safely restores natural insulin sensitivity so you can enjoy your favorite foods without the dreaded afternoon crash."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Take control of your metabolic future starting today. Order your supply of GlucoAlpine right now through this exclusive video broadcast to enjoy priority express shipping and our comprehensive 60-day satisfaction guarantee. Remember, stable blood sugar is the foundation of boundless daily energy and long-term vitality. Tap the button directly below this screen to secure your discounted package right now!"</span>
+
+<span class="hl-tag">--- VSL 4: REMOTE HIGH-TICKET CLOSING ---</span>
+
+<span class="hl-tag">THE HOOK:</span>
+<span class="hl-string">"Are you utterly exhausted from trading 40 to 50 hours a week of your life for a fixed corporate salary that barely covers rent and groceries while inflation spirals completely out of control?"</span>
+
+<span class="hl-tag">THE AGITATION:</span>
+<span class="hl-string">"Corporate jobs offer zero freedom, zero upside, and constant micromanagement. You work harder every year while your purchasing power shrinks. You deserve an income that matches your actual effort and ambition, not an arbitrary ceiling set by an employer."</span>
+
+<span class="hl-tag">THE SOLUTION:</span>
+<span class="hl-string">"Our Remote Closer Academy trains you in high-ticket closing frameworks over 30 days, placing you directly with vetted six-figure coaching offers so you can earn commission checks from anywhere in the world."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Your gateway to absolute financial and location independence is only one decisive click away. Seats for our upcoming training cohort are strictly capped to ensure personalized mentorship and guaranteed placement opportunities with our elite industry partners. Do not let hesitation keep you trapped in the 9-to-5 rat race for another year. Click the button below to submit your application and secure your spot before registration officially closes!"</span>
+
+<span class="hl-tag">--- VSL 5: DORMANT FOLLICLE HAIR REGROWTH ---</span>
+
+<span class="hl-tag">THE HOOK:</span>
+<span class="hl-string">"If you are noticing significantly more hair in your shower drain than on your head when you style it in the morning, listen very carefully. Hair loss isn't random genetic destiny—it's driven by an aggressive scalp enzyme called DHT."</span>
+
+<span class="hl-tag">THE AGITATION:</span>
+<span class="hl-string">"Expensive chemical minoxidil foams leave your scalp greasy, itchy, and irritated, and the moment you stop using them, all your hard-earned hair falls right back out. You've wasted hundreds on products that simply don't work."</span>
+
+<span class="hl-tag">THE SOLUTION:</span>
+<span class="hl-string">"FollicleRevive serum blocks DHT locally while waking up dormant stem cell roots in your scalp for permanent, natural regrowth within 90 days. Backed by clinical trials, it revitalizes dead follicles at the root."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Stop covering up thinning spots and start restoring a thick, youthful head of hair with complete confidence. When you claim your starter kit today, you're backed by our ironclad 90-day empty bottle guarantee—if you don't see visible new hairline growth, you get every cent back. Stock is moving rapidly due to high demand. Click the button below right now to claim your discounted bottles and start your hair revival journey today!"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: UGC -->
+    <div id="modal_ugc" class="modal-overlay" onclick="outsideClose(event, 'modal_ugc')">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>UGC Ad Scripts</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal_ugc')">&times;</button>
+            </div>
+            <div class="modal-body">
+<span class="hl-tag">--- UGC SCRIPT 1: MATTE SUNSCREEN STICK ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-visual">(Creator dramatically wipes off chalky white sunscreen from face, looking super annoyed)</span>
+<span class="hl-string">Creator: "If your sunscreen makes you look like a literal ghost at the beach, you need to stop scrolling right now."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Most chemical sunscreens clog your pores instantly, feel greasy under the sun, and ruin your entire makeup foundation within minutes."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"This invisible matte SPF stick glides smoothly right over makeup with zero grease or white cast. Look at how flawlessly smooth this finish is!"</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Grab the exclusive buy-one-get-one summer deal by tapping the button below right now!"</span>
+
+<span class="hl-tag">--- UGC SCRIPT 2: NATURAL DEODORANT PASTE ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-string">Creator: "I literally threw away all my toxic commercial deodorants after finding this absolute skincare gem."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Aluminum-packed deodorants block your natural sweat glands and leave stubborn yellow chemical stains on all your favorite white shirts."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"This magnesium-powered formula keeps you smelling fresh all day through intense gym workouts without a single drop of baking soda."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Tap the button below to try it completely risk-free today!"</span>
+
+<span class="hl-tag">--- UGC SCRIPT 3: TEETH WHITENING PEN ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-string">Creator: "Stop spending five hundred dollars at the dental clinic for professional whitening treatments."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Laser whitening hurts your teeth for days and leaves you unable to enjoy cold drinks or morning coffee without shooting pain."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"Paint this refreshing minty gel onto your teeth right before bed—zero tooth sensitivity, and sparkling bright results by morning."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Click the button below to shop our limited flash sale right now!"</span>
+
+<span class="hl-tag">--- UGC SCRIPT 4: SCALP MASSAGER BRUSH ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-string">Creator: "Your daily shower hair-care routine is missing this one affordable ten-dollar tool."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Shampooing with just your fingertips leaves product buildup and fails to stimulate the hair follicle blood circulation you desperately need."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"Flexible silicone bristles gently exfoliate your scalp while giving you the most relaxing, spa-grade head massage during every wash."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Get yours now before our remaining stock sells out completely!"</span>
+
+<span class="hl-tag">--- UGC SCRIPT 5: SLEEP MASK BLACKOUT ---</span>
+<span class="hl-tag">HOOK:</span>
+<span class="hl-string">Creator: "If night shifts or morning sunlight completely wreck your sleep cycle, you urgently need this mask."</span>
+
+<span class="hl-tag">PROBLEM & AGITATION:</span>
+<span class="hl-string">"Cheap flat sleep masks press painfully directly against your eyelids and let annoying slivers of light leak through the nose bridge."</span>
+
+<span class="hl-tag">SOLUTION & DEMO:</span>
+<span class="hl-string">"Zero eye pressure cups let you blink freely while blocking one hundred percent of incoming ambient light for deep REM sleep anywhere."</span>
+
+<span class="hl-tag">CALL TO ACTION:</span>
+<span class="hl-string">"Tap the button below to order your blackout mask today!"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Meta Ads (No Links Included) -->
+    <div id="modal_meta" class="modal-overlay" onclick="outsideClose(event, 'modal_meta')">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Meta Ads Copies (No Links)</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal_meta')">&times;</button>
+            </div>
+            <div class="modal-body">
+<span class="hl-tag">--- META AD 1 ---</span>
+<span class="hl-string">Are you tired of applying sunscreen that leaves you looking like a literal ghost at the beach? 👻 Most chemical sunscreens clog your pores and feel greasy. Meet the Invisible Matte SPF 50 Stick. It goes on completely clear and you can reapply it right over makeup without ruining your look. 👉 Tap 'Learn More' below for our BOGO Free summer bundle!</span>
+
+<span class="hl-tag">--- META AD 2 ---</span>
+<span class="hl-string">Still using aluminum deodorants that stain your favorite shirts yellow? 📉 Switch to magnesium-powered freshness that neutralizes odor for 48 hours straight without baking soda or toxic fillers. 👉 Click below to claim 20% off your first order today!</span>
+
+<span class="hl-tag">--- META AD 3 ---</span>
+<span class="hl-string">Want a blinding white smile without dropping $500 at the dentist? 🦷✨ Our Precision Whitening Pen uses enamel-safe gel engineered specifically for sensitive teeth. Paint it on before bed and wake up up to 3 shades whiter. 👉 Click 'Shop Now' during our limited flash sale!</span>
+
+<span class="hl-tag">--- META AD 4 ---</span>
+<span class="hl-string">Your shower routine is missing this $10 game-changer. 🚿💆‍♀️ Shampooing alone isn't enough for hair growth—you need to stimulate follicle circulation. The Silicone Scalp Stimulator exfoliates and promotes natural growth. 👉 Tap below to grab yours!</span>
+
+<span class="hl-tag">--- META AD 5 ---</span>
+<span class="hl-string">If night shifts or morning light ruin your sleep cycle, you need to see this. 😴🌙 Traditional sleep masks press uncomfortably on your eyelids. Our 3D Contoured Blackout Mask features hollow eye cups that let you blink freely while blocking 100% of ambient light. 👉 Click below to upgrade your sleep!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Loader, Lenis Smooth Scroll, Sticky Stacking, and Modals -->
+    <script type="module">
+        import Lenis from "lenis";
+
+        const lenis = new Lenis({ 
+            smoothWheel: true,
+            lerp: 0.1
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    </script>
+
+    <script>
+        // Opening Loader Animation
+        let progress = 0;
+        const meterEl = document.getElementById('loaderMeterFill');
+        const loaderEl = document.getElementById('loader');
+
+        const interval = setInterval(() => {
+            progress += 0.05;
+            if (progress >= 1) {
+                progress = 1;
+                clearInterval(interval);
+                setTimeout(() => {
+                    loaderEl.classList.add('fade-out');
+                }, 300);
+            }
+            meterEl.style.transform = `scaleX(${progress})`;
+        }, 50);
+
+        // Sticky Stack Recede & Scale Animation Logic
+        const pinned = [];
+        const layers = document.querySelectorAll('[data-sticky-layer]');
+        for (let i = 0; i < layers.length - 1; i++) {
+            pinned.push({
+                inner: layers[i].querySelector('[data-sticky-inner]'),
+                shade: layers[i].querySelector('[data-sticky-shade]'),
+                next: layers[i + 1]
+            });
+        }
+
+        const RECEDE_SCALE = 0.92;
+        const RECEDE_SHADE = 0.6;
+        const phone = window.matchMedia("(max-width: 639px)");
+
+        window.addEventListener('scroll', () => {
+            const view = window.innerHeight || 1;
+            const shrink = phone.matches ? 0 : 1 - RECEDE_SCALE;
+            for (const { inner, shade, next } of pinned) {
+                const rect = next.getBoundingClientRect();
+                const p = Math.min(1, Math.max(0, 1 - rect.top / view));
+                
+                if (p > 0 && shrink > 0) {
+                    inner.style.transform = `scale(${1 - shrink * p})`;
+                    inner.style.borderRadius = `${p * 16}px`;
+                } else {
+                    inner.style.transform = "";
+                    inner.style.borderRadius = "0px";
+                }
+                
+                shade.style.opacity = `${RECEDE_SHADE * p}`;
+                inner.style.visibility = p >= 0.99 ? "hidden" : "visible";
+            }
+        }, { passive: true });
+
+        // Modal Pop-up Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function outsideClose(event, modalId) {
+            if (event.target.id === modalId) {
+                closeModal(modalId);
+            }
+        }
+    </script>
+
+</body>
+</html>
